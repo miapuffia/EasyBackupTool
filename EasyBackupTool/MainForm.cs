@@ -430,5 +430,9 @@ namespace EasyBackupTool {
         private void emailLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
             System.Diagnostics.Process.Start("mailto:miaweb.rr@gmail.com");
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+            System.Diagnostics.Process.Start("https://github.com/miapuffia/EasyBackupTool");
+        }
     }
 }
