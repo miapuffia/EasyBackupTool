@@ -298,7 +298,7 @@ namespace EasyBackupTool {
         }
 
         private void HandleMakeBackupsButtonState() {
-            makeBackupsButton.Enabled = (GetBakupsCheckedState() == 2);
+            makeBackupsButton.Enabled = (GetBakupsCheckedState() % 2 == 0); //This was the easiest way to test for 0 and 2
         }
 
         private int GetBakupsCheckedState() {
@@ -315,7 +315,7 @@ namespace EasyBackupTool {
                 }
             }
 
-            //0 if both are false
+            //0 if some checked
             //1 if none checked
             //2 if all checked
             //3 if error
@@ -433,6 +433,22 @@ namespace EasyBackupTool {
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
             System.Diagnostics.Process.Start("https://github.com/miapuffia/EasyBackupTool");
+        }
+
+        private void backupsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            DataGridViewCell dgvc = backupsDataGridView.Rows[e.RowIndex].Cells[0];
+
+            if(dgvc.ValueType == typeof(bool)) {
+                dgvc.Value = !((bool) dgvc.Value);
+            }
+        }
+
+        private void manageDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            if(e.ColumnIndex == 1 || e.ColumnIndex == 2) {
+                DataGridViewCell dgvc = manageDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                System.Diagnostics.Process.Start(dgvc.Value.ToString());
+            }
         }
     }
 }
