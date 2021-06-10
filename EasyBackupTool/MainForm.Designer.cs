@@ -29,15 +29,16 @@ namespace EasyBackupTool
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.backupTabPage = new System.Windows.Forms.TabPage();
             this.backupTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.backupsDataGridView = new System.Windows.Forms.DataGridView();
             this.makeBackupsButton = new System.Windows.Forms.Button();
+            this.totalBackupsTextProgressBar = new ProgressBarSample.TextProgressBar();
             this.addBackupMessageTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.addBackupLinkLabel = new System.Windows.Forms.LinkLabel();
@@ -57,9 +58,15 @@ namespace EasyBackupTool
             this.messageLabel = new System.Windows.Forms.Label();
             this.editTabPage = new System.Windows.Forms.TabPage();
             this.editTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.editAccordion = new Opulos.Core.UI.Accordion();
             this.saveChangesButton = new System.Windows.Forms.Button();
             this.manageTabPage = new System.Windows.Forms.TabPage();
             this.manageDataGridView = new System.Windows.Forms.DataGridView();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DestinationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.settingsParentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.settingsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -84,13 +91,6 @@ namespace EasyBackupTool
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalBackupsTextProgressBar = new ProgressBarSample.TextProgressBar();
-            this.editAccordion = new Opulos.Core.UI.Accordion();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DestinationColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.mainTabControl.SuspendLayout();
             this.backupTabPage.SuspendLayout();
@@ -152,8 +152,8 @@ namespace EasyBackupTool
             this.backupTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.backupTableLayoutPanel.Name = "backupTableLayoutPanel";
             this.backupTableLayoutPanel.RowCount = 4;
-            this.backupTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.backupTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.backupTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.backupTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.backupTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.backupTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.backupTableLayoutPanel.Size = new System.Drawing.Size(1107, 458);
@@ -164,30 +164,30 @@ namespace EasyBackupTool
             this.backupsDataGridView.AllowUserToAddRows = false;
             this.backupsDataGridView.AllowUserToDeleteRows = false;
             this.backupsDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.backupsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.backupsDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.backupsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.backupsDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.backupsDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.backupsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.backupsDataGridView.Location = new System.Drawing.Point(3, 3);
             this.backupsDataGridView.Name = "backupsDataGridView";
             this.backupsDataGridView.RowHeadersVisible = false;
             this.backupsDataGridView.RowHeadersWidth = 50;
             this.backupsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.backupsDataGridView.Size = new System.Drawing.Size(1101, 186);
+            this.backupsDataGridView.Size = new System.Drawing.Size(1101, 338);
             this.backupsDataGridView.TabIndex = 2;
             this.backupsDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.backupsDataGridView_CellValueChanged);
             this.backupsDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.backupsDataGridView_CurrentCellDirtyStateChanged);
@@ -206,6 +206,19 @@ namespace EasyBackupTool
             this.makeBackupsButton.UseVisualStyleBackColor = true;
             this.makeBackupsButton.Click += new System.EventHandler(this.makeBackupsButton_Click);
             // 
+            // totalBackupsTextProgressBar
+            // 
+            this.totalBackupsTextProgressBar.CustomText = "";
+            this.totalBackupsTextProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.totalBackupsTextProgressBar.Location = new System.Drawing.Point(3, 434);
+            this.totalBackupsTextProgressBar.Name = "totalBackupsTextProgressBar";
+            this.totalBackupsTextProgressBar.ProgressColor = System.Drawing.Color.LightGreen;
+            this.totalBackupsTextProgressBar.Size = new System.Drawing.Size(1101, 21);
+            this.totalBackupsTextProgressBar.TabIndex = 3;
+            this.totalBackupsTextProgressBar.TextColor = System.Drawing.Color.Black;
+            this.totalBackupsTextProgressBar.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.totalBackupsTextProgressBar.VisualMode = ProgressBarSample.ProgressBarDisplayMode.NoText;
+            // 
             // addBackupMessageTableLayoutPanel
             // 
             this.addBackupMessageTableLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -218,12 +231,12 @@ namespace EasyBackupTool
             this.addBackupMessageTableLayoutPanel.Controls.Add(this.label1, 0, 0);
             this.addBackupMessageTableLayoutPanel.Controls.Add(this.addBackupLinkLabel, 1, 0);
             this.addBackupMessageTableLayoutPanel.Controls.Add(this.label2, 2, 0);
-            this.addBackupMessageTableLayoutPanel.Location = new System.Drawing.Point(282, 202);
+            this.addBackupMessageTableLayoutPanel.Location = new System.Drawing.Point(282, 354);
             this.addBackupMessageTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.addBackupMessageTableLayoutPanel.Name = "addBackupMessageTableLayoutPanel";
             this.addBackupMessageTableLayoutPanel.RowCount = 1;
             this.addBackupMessageTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.addBackupMessageTableLayoutPanel.Size = new System.Drawing.Size(542, 20);
+            this.addBackupMessageTableLayoutPanel.Size = new System.Drawing.Size(542, 30);
             this.addBackupMessageTableLayoutPanel.TabIndex = 4;
             // 
             // label1
@@ -231,7 +244,7 @@ namespace EasyBackupTool
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(286, 20);
             this.label1.TabIndex = 0;
@@ -242,7 +255,7 @@ namespace EasyBackupTool
             this.addBackupLinkLabel.AutoSize = true;
             this.addBackupLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.addBackupLinkLabel.Location = new System.Drawing.Point(286, 0);
-            this.addBackupLinkLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.addBackupLinkLabel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.addBackupLinkLabel.Name = "addBackupLinkLabel";
             this.addBackupLinkLabel.Size = new System.Drawing.Size(107, 20);
             this.addBackupLinkLabel.TabIndex = 2;
@@ -255,7 +268,7 @@ namespace EasyBackupTool
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label2.Location = new System.Drawing.Point(393, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
+            this.label2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 20);
             this.label2.TabIndex = 1;
@@ -462,6 +475,67 @@ namespace EasyBackupTool
             this.editTableLayoutPanel.Size = new System.Drawing.Size(1107, 458);
             this.editTableLayoutPanel.TabIndex = 0;
             // 
+            // editAccordion
+            // 
+            this.editAccordion.AddResizeBars = true;
+            this.editAccordion.AllowMouseResize = true;
+            this.editAccordion.AnimateCloseEffect = Opulos.Core.UI.AnimateWindowFlags.None;
+            this.editAccordion.AnimateCloseMillis = 300;
+            this.editAccordion.AnimateOpenEffect = Opulos.Core.UI.AnimateWindowFlags.None;
+            this.editAccordion.AnimateOpenMillis = 300;
+            this.editAccordion.AutoFixDockStyle = false;
+            this.editAccordion.AutoScroll = true;
+            this.editAccordion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.editAccordion.CheckBoxFactory = null;
+            this.editAccordion.CheckBoxMargin = new System.Windows.Forms.Padding(2);
+            this.editAccordion.ContentBackColor = null;
+            this.editAccordion.ContentMargin = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            this.editAccordion.ContentPadding = new System.Windows.Forms.Padding(1);
+            this.editAccordion.ControlBackColor = null;
+            this.editAccordion.ControlMinimumHeightIsItsPreferredHeight = true;
+            this.editAccordion.ControlMinimumWidthIsItsPreferredWidth = true;
+            this.editAccordion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editAccordion.DownArrow = null;
+            this.editAccordion.FillHeight = true;
+            this.editAccordion.FillLastOpened = false;
+            this.editAccordion.FillModeGrowOnly = false;
+            this.editAccordion.FillResetOnCollapse = false;
+            this.editAccordion.FillWidth = true;
+            this.editAccordion.GrabCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.editAccordion.GrabRequiresPositiveFillWeight = true;
+            this.editAccordion.GrabWidth = 6;
+            this.editAccordion.GrowAndShrink = true;
+            this.editAccordion.Insets = new System.Windows.Forms.Padding(5);
+            this.editAccordion.Location = new System.Drawing.Point(3, 3);
+            this.editAccordion.Name = "editAccordion";
+            this.editAccordion.OpenOnAdd = false;
+            this.editAccordion.OpenOneOnly = false;
+            this.editAccordion.Padding = new System.Windows.Forms.Padding(5);
+            this.editAccordion.ResizeBarFactory = null;
+            this.editAccordion.ResizeBarsAlign = 0.5D;
+            this.editAccordion.ResizeBarsArrowKeyDelta = 10;
+            this.editAccordion.ResizeBarsFadeInMillis = 800;
+            this.editAccordion.ResizeBarsFadeOutMillis = 800;
+            this.editAccordion.ResizeBarsFadeProximity = 24;
+            this.editAccordion.ResizeBarsFill = 1D;
+            this.editAccordion.ResizeBarsKeepFocusAfterMouseDrag = false;
+            this.editAccordion.ResizeBarsKeepFocusIfControlOutOfView = true;
+            this.editAccordion.ResizeBarsKeepFocusOnClick = true;
+            this.editAccordion.ResizeBarsMargin = null;
+            this.editAccordion.ResizeBarsMinimumLength = 50;
+            this.editAccordion.ResizeBarsStayInViewOnArrowKey = true;
+            this.editAccordion.ResizeBarsStayInViewOnMouseDrag = true;
+            this.editAccordion.ResizeBarsStayVisibleIfFocused = true;
+            this.editAccordion.ResizeBarsTabStop = true;
+            this.editAccordion.ShowPartiallyVisibleResizeBars = false;
+            this.editAccordion.ShowToolMenu = true;
+            this.editAccordion.ShowToolMenuOnHoverWhenClosed = false;
+            this.editAccordion.ShowToolMenuOnRightClick = true;
+            this.editAccordion.ShowToolMenuRequiresPositiveFillWeight = false;
+            this.editAccordion.Size = new System.Drawing.Size(1101, 405);
+            this.editAccordion.TabIndex = 0;
+            this.editAccordion.UpArrow = null;
+            // 
             // saveChangesButton
             // 
             this.saveChangesButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -492,14 +566,14 @@ namespace EasyBackupTool
             this.manageDataGridView.AllowUserToAddRows = false;
             this.manageDataGridView.AllowUserToDeleteRows = false;
             this.manageDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.manageDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.manageDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.manageDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.manageDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NameColumn,
@@ -507,14 +581,14 @@ namespace EasyBackupTool
             this.DestinationColumn,
             this.DateColumn,
             this.ResultColumn});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.manageDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.manageDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.manageDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.manageDataGridView.Location = new System.Drawing.Point(3, 3);
             this.manageDataGridView.Name = "manageDataGridView";
@@ -522,6 +596,44 @@ namespace EasyBackupTool
             this.manageDataGridView.RowHeadersVisible = false;
             this.manageDataGridView.Size = new System.Drawing.Size(1107, 458);
             this.manageDataGridView.TabIndex = 0;
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameColumn.FillWeight = 50F;
+            this.NameColumn.HeaderText = "Name";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            // 
+            // SourceColumn
+            // 
+            this.SourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SourceColumn.HeaderText = "Source path";
+            this.SourceColumn.Name = "SourceColumn";
+            this.SourceColumn.ReadOnly = true;
+            // 
+            // DestinationColumn
+            // 
+            this.DestinationColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DestinationColumn.HeaderText = "Destination path";
+            this.DestinationColumn.Name = "DestinationColumn";
+            this.DestinationColumn.ReadOnly = true;
+            // 
+            // DateColumn
+            // 
+            this.DateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DateColumn.FillWeight = 50F;
+            this.DateColumn.HeaderText = "Date-time";
+            this.DateColumn.Name = "DateColumn";
+            this.DateColumn.ReadOnly = true;
+            // 
+            // ResultColumn
+            // 
+            this.ResultColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResultColumn.FillWeight = 50F;
+            this.ResultColumn.HeaderText = "Backup result";
+            this.ResultColumn.Name = "ResultColumn";
+            this.ResultColumn.ReadOnly = true;
             // 
             // settingsTabPage
             // 
@@ -834,118 +946,6 @@ namespace EasyBackupTool
             this.dataGridViewTextBoxColumn5.HeaderText = "Backup result";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // totalBackupsTextProgressBar
-            // 
-            this.totalBackupsTextProgressBar.CustomText = "";
-            this.totalBackupsTextProgressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.totalBackupsTextProgressBar.Location = new System.Drawing.Point(3, 434);
-            this.totalBackupsTextProgressBar.Name = "totalBackupsTextProgressBar";
-            this.totalBackupsTextProgressBar.ProgressColor = System.Drawing.Color.LightGreen;
-            this.totalBackupsTextProgressBar.Size = new System.Drawing.Size(1101, 21);
-            this.totalBackupsTextProgressBar.TabIndex = 3;
-            this.totalBackupsTextProgressBar.TextColor = System.Drawing.Color.Black;
-            this.totalBackupsTextProgressBar.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.totalBackupsTextProgressBar.VisualMode = ProgressBarSample.ProgressBarDisplayMode.NoText;
-            // 
-            // editAccordion
-            // 
-            this.editAccordion.AddResizeBars = true;
-            this.editAccordion.AllowMouseResize = true;
-            this.editAccordion.AnimateCloseEffect = Opulos.Core.UI.AnimateWindowFlags.None;
-            this.editAccordion.AnimateCloseMillis = 300;
-            this.editAccordion.AnimateOpenEffect = Opulos.Core.UI.AnimateWindowFlags.None;
-            this.editAccordion.AnimateOpenMillis = 300;
-            this.editAccordion.AutoFixDockStyle = false;
-            this.editAccordion.AutoScroll = true;
-            this.editAccordion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.editAccordion.CheckBoxFactory = null;
-            this.editAccordion.CheckBoxMargin = new System.Windows.Forms.Padding(2);
-            this.editAccordion.ContentBackColor = null;
-            this.editAccordion.ContentMargin = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            this.editAccordion.ContentPadding = new System.Windows.Forms.Padding(1);
-            this.editAccordion.ControlBackColor = null;
-            this.editAccordion.ControlMinimumHeightIsItsPreferredHeight = true;
-            this.editAccordion.ControlMinimumWidthIsItsPreferredWidth = true;
-            this.editAccordion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editAccordion.DownArrow = null;
-            this.editAccordion.FillHeight = true;
-            this.editAccordion.FillLastOpened = false;
-            this.editAccordion.FillModeGrowOnly = false;
-            this.editAccordion.FillResetOnCollapse = false;
-            this.editAccordion.FillWidth = true;
-            this.editAccordion.GrabCursor = System.Windows.Forms.Cursors.SizeNS;
-            this.editAccordion.GrabRequiresPositiveFillWeight = true;
-            this.editAccordion.GrabWidth = 6;
-            this.editAccordion.GrowAndShrink = true;
-            this.editAccordion.Insets = new System.Windows.Forms.Padding(5);
-            this.editAccordion.Location = new System.Drawing.Point(3, 3);
-            this.editAccordion.Name = "editAccordion";
-            this.editAccordion.OpenOnAdd = false;
-            this.editAccordion.OpenOneOnly = false;
-            this.editAccordion.Padding = new System.Windows.Forms.Padding(5);
-            this.editAccordion.ResizeBarFactory = null;
-            this.editAccordion.ResizeBarsAlign = 0.5D;
-            this.editAccordion.ResizeBarsArrowKeyDelta = 10;
-            this.editAccordion.ResizeBarsFadeInMillis = 800;
-            this.editAccordion.ResizeBarsFadeOutMillis = 800;
-            this.editAccordion.ResizeBarsFadeProximity = 24;
-            this.editAccordion.ResizeBarsFill = 1D;
-            this.editAccordion.ResizeBarsKeepFocusAfterMouseDrag = false;
-            this.editAccordion.ResizeBarsKeepFocusIfControlOutOfView = true;
-            this.editAccordion.ResizeBarsKeepFocusOnClick = true;
-            this.editAccordion.ResizeBarsMargin = null;
-            this.editAccordion.ResizeBarsMinimumLength = 50;
-            this.editAccordion.ResizeBarsStayInViewOnArrowKey = true;
-            this.editAccordion.ResizeBarsStayInViewOnMouseDrag = true;
-            this.editAccordion.ResizeBarsStayVisibleIfFocused = true;
-            this.editAccordion.ResizeBarsTabStop = true;
-            this.editAccordion.ShowPartiallyVisibleResizeBars = false;
-            this.editAccordion.ShowToolMenu = true;
-            this.editAccordion.ShowToolMenuOnHoverWhenClosed = false;
-            this.editAccordion.ShowToolMenuOnRightClick = true;
-            this.editAccordion.ShowToolMenuRequiresPositiveFillWeight = false;
-            this.editAccordion.Size = new System.Drawing.Size(1101, 405);
-            this.editAccordion.TabIndex = 0;
-            this.editAccordion.UpArrow = null;
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameColumn.FillWeight = 50F;
-            this.NameColumn.HeaderText = "Name";
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            // 
-            // SourceColumn
-            // 
-            this.SourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SourceColumn.HeaderText = "Source path";
-            this.SourceColumn.Name = "SourceColumn";
-            this.SourceColumn.ReadOnly = true;
-            // 
-            // DestinationColumn
-            // 
-            this.DestinationColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DestinationColumn.HeaderText = "Destination path";
-            this.DestinationColumn.Name = "DestinationColumn";
-            this.DestinationColumn.ReadOnly = true;
-            // 
-            // DateColumn
-            // 
-            this.DateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DateColumn.FillWeight = 50F;
-            this.DateColumn.HeaderText = "Date-time";
-            this.DateColumn.Name = "DateColumn";
-            this.DateColumn.ReadOnly = true;
-            // 
-            // ResultColumn
-            // 
-            this.ResultColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResultColumn.FillWeight = 50F;
-            this.ResultColumn.HeaderText = "Backup result";
-            this.ResultColumn.Name = "ResultColumn";
-            this.ResultColumn.ReadOnly = true;
             // 
             // dataGridViewCheckBoxColumn1
             // 
