@@ -47,6 +47,7 @@ namespace EasyBackupTool {
             col1.HeaderCell = col1Header;
             col1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             col1.FillWeight = 10;
+            col1.ReadOnly = false;
 
             col1Header.OnCheckBoxClicked += new CheckBoxClickedHandler(delegate (bool state) {
                 foreach(DataGridViewRow dgvr in backupsDataGridView.Rows) {
@@ -448,6 +449,14 @@ namespace EasyBackupTool {
                 DataGridViewCell dgvc = manageDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
                 System.Diagnostics.Process.Start(dgvc.Value.ToString());
+            }
+        }
+
+        private void backupsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            if(e.ColumnIndex == 0) {
+                DataGridViewCell dgvc = backupsDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                dgvc.Value = !((bool) dgvc.Value);
             }
         }
     }

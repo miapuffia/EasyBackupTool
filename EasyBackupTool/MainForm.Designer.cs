@@ -62,6 +62,11 @@ namespace EasyBackupTool
             this.saveChangesButton = new System.Windows.Forms.Button();
             this.manageTabPage = new System.Windows.Forms.TabPage();
             this.manageDataGridView = new System.Windows.Forms.DataGridView();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.DestinationColumn = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.DateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.settingsTabPage = new System.Windows.Forms.TabPage();
             this.settingsParentTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.settingsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -87,11 +92,6 @@ namespace EasyBackupTool
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DestinationColumn = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.DateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainTabControl.SuspendLayout();
             this.backupTabPage.SuspendLayout();
             this.backupTableLayoutPanel.SuspendLayout();
@@ -190,6 +190,7 @@ namespace EasyBackupTool
             this.backupsDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.backupsDataGridView.Size = new System.Drawing.Size(1101, 338);
             this.backupsDataGridView.TabIndex = 2;
+            this.backupsDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.backupsDataGridView_CellContentClick);
             this.backupsDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.backupsDataGridView_CellDoubleClick);
             this.backupsDataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.backupsDataGridView_CellValueChanged);
             this.backupsDataGridView.CurrentCellDirtyStateChanged += new System.EventHandler(this.backupsDataGridView_CurrentCellDirtyStateChanged);
@@ -601,6 +602,52 @@ namespace EasyBackupTool
             this.manageDataGridView.TabIndex = 0;
             this.manageDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.manageDataGridView_CellContentClick);
             // 
+            // NameColumn
+            // 
+            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameColumn.FillWeight = 50F;
+            this.NameColumn.HeaderText = "Name";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            // 
+            // SourceColumn
+            // 
+            this.SourceColumn.ActiveLinkColor = System.Drawing.Color.White;
+            this.SourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SourceColumn.HeaderText = "Source path";
+            this.SourceColumn.Name = "SourceColumn";
+            this.SourceColumn.ReadOnly = true;
+            this.SourceColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SourceColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SourceColumn.VisitedLinkColor = System.Drawing.Color.Blue;
+            // 
+            // DestinationColumn
+            // 
+            this.DestinationColumn.ActiveLinkColor = System.Drawing.Color.White;
+            this.DestinationColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DestinationColumn.HeaderText = "Destination path";
+            this.DestinationColumn.Name = "DestinationColumn";
+            this.DestinationColumn.ReadOnly = true;
+            this.DestinationColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DestinationColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.DestinationColumn.VisitedLinkColor = System.Drawing.Color.Blue;
+            // 
+            // DateColumn
+            // 
+            this.DateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DateColumn.FillWeight = 50F;
+            this.DateColumn.HeaderText = "Date-time";
+            this.DateColumn.Name = "DateColumn";
+            this.DateColumn.ReadOnly = true;
+            // 
+            // ResultColumn
+            // 
+            this.ResultColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ResultColumn.FillWeight = 50F;
+            this.ResultColumn.HeaderText = "Backup result";
+            this.ResultColumn.Name = "ResultColumn";
+            this.ResultColumn.ReadOnly = true;
+            // 
             // settingsTabPage
             // 
             this.settingsTabPage.Controls.Add(this.settingsParentTableLayoutPanel);
@@ -918,52 +965,6 @@ namespace EasyBackupTool
             this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.dataGridViewCheckBoxColumn1.HeaderText = "Include";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NameColumn.FillWeight = 50F;
-            this.NameColumn.HeaderText = "Name";
-            this.NameColumn.Name = "NameColumn";
-            this.NameColumn.ReadOnly = true;
-            // 
-            // SourceColumn
-            // 
-            this.SourceColumn.ActiveLinkColor = System.Drawing.Color.White;
-            this.SourceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SourceColumn.HeaderText = "Source path";
-            this.SourceColumn.Name = "SourceColumn";
-            this.SourceColumn.ReadOnly = true;
-            this.SourceColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SourceColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.SourceColumn.VisitedLinkColor = System.Drawing.Color.Blue;
-            // 
-            // DestinationColumn
-            // 
-            this.DestinationColumn.ActiveLinkColor = System.Drawing.Color.White;
-            this.DestinationColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DestinationColumn.HeaderText = "Destination path";
-            this.DestinationColumn.Name = "DestinationColumn";
-            this.DestinationColumn.ReadOnly = true;
-            this.DestinationColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DestinationColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.DestinationColumn.VisitedLinkColor = System.Drawing.Color.Blue;
-            // 
-            // DateColumn
-            // 
-            this.DateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DateColumn.FillWeight = 50F;
-            this.DateColumn.HeaderText = "Date-time";
-            this.DateColumn.Name = "DateColumn";
-            this.DateColumn.ReadOnly = true;
-            // 
-            // ResultColumn
-            // 
-            this.ResultColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ResultColumn.FillWeight = 50F;
-            this.ResultColumn.HeaderText = "Backup result";
-            this.ResultColumn.Name = "ResultColumn";
-            this.ResultColumn.ReadOnly = true;
             // 
             // MainForm
             // 
